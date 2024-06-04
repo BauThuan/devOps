@@ -58,6 +58,13 @@ I- Docker
 
 
     - (-rwxs----: owner-group-other, owner(r, w, không có x), group(x, s), other(ko có quyền gì))
+    - r(đọc): 4
+    - w(ghi): 2
+    - x(thực thi): 1
+    - start -c '%a" f.txt: kiểm tra quyền người dùng đối với 1 tập file (VD 644: Người dùng có quyền đọc ghi, các user khác có quyền đọc)
+    - Nguời dùng có quyền r(đọc) thì có quyền sao chép tập tin, tập tin sau khi sao chép sẽ thuộc sở hữu của người sao chép
+
+
     - chmod: phân quyền người dùng
     - chmod 777: tất cả các user trong hệ thống đều có full permissions(read, write, execute)
     - chown(tên_user_trao quyền tên_file): trao quyền sở hữu cho User khác
