@@ -57,9 +57,9 @@ I- Docker
 
 
 
-    - (-rwxs----: những quyền mà người dùng có thể thực hiện được r, w, x, s. Còn lại dấu - là quyền không thể thực hiện)
+    - (-rwxs----: owner-group-other, owner(r, w, không có x), group(x, s), other(ko có quyền gì))
     - chmod: phân quyền người dùng
-    - chmod 777: tất cả các user trong hệ thống đều có full permissions(read, write, execute,..)
+    - chmod 777: tất cả các user trong hệ thống đều có full permissions(read, write, execute)
     - chown(tên_user_trao quyền tên_file): trao quyền sở hữu cho User khác
 
     - cat: đọc file
