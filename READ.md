@@ -29,4 +29,44 @@ I- Docker
   - Infranstructure và Hypervisor hoạt động độc lập với nhau
   - Hypervisor cài trước cả hệ điều hành
   - Hypervisor ảo hóa Infranstructure(phần cứng) cung cấp tài nguyên cho Virtual Machine (chiếm đúng cái tài nguyên đấy luôn(2G, 1 ram v.v))
+3. Kiến trúc của Docker
+  a- Client
+    - Cung cấp chức năng thay đổi các thành phần như: Container, Image, Network,.... bằng RestAPI, Socket để giao tiếp với server
+  b- Docker_Host(Server)
+    - Nhận request từ client để thực thi và chứa các thành phần quan trọng Container, Image
+    - Docker deamon: là 1 process(xử lý) deamon dùng để quản lý (create- tạo, remove- xóa, build- xây dựng) Container, Image
+    => Request -> Docker_deamon (thực thi các request)
+  c- Registry
+    - Nơi lưu trữ và chia sẻ ImageImage 
+
+  CLIENT(docker build, pull, run...) -> Docker deamon(Docker_Host) -> Image(Docker_Host, có thể chạy qua Registry) -> Container (Docker_Host)
+4. Linux
+  - Cấu trúc theo dạng câu điểm khởi đầu là / (root)
+  * Thư mục:
+    - /root: thư mục cao nhất và tất cả các file nằm trong thư mục này.
+    - /bin: thư mục chứa các file thực thi dạng binary và cũng là các chương trình mà User sẽ sử dụng trong hệ thống.
+    - /sbin: giống /bin, thường sẽ là các chương trình quan trọng trong hệ thống để thực thi phải là SuperUser (thường sẽ thấy trước câu lệnh syntax là "sudo, su, ..." ).
+    - /etc: thư mục chứa file cấu hình chương trình hệ thống.
+    - /mnt: thư mục chứa các file mount tạm thời của hệ thống.
+    - /tmp: thư mục chứa các file tạm thời bởi hệ thống hoặc User. Các file trong thư mục này sẽ bị xóa khi hệ thống shutdown.
+  * Các lệnh thường sử dụng trong Linux
+    - ssh tên_user@địa_chỉ_IP : truy cập vào User mới
+
+    - sudo su: quay trở lại user root.
+    - sudo apt install ten_package: tải packakage cần thiết
+
+
+
+    - (-rwxs----: những quyền mà người dùng có thể thực hiện được r, w, x, s. Còn lại dấu - là quyền không thể thực hiện)
+    - chmod: phân quyền người dùng
+    - chmod 777: tất cả các user trong hệ thống đều có full permissions(read, write, execute,..)
+    - chown(tên_user_trao quyền tên_file): trao quyền sở hữu cho User khác
+
+    - cat: đọc file
+    - vi: sửa file
+    - exit: thoát
+
+    - useradd: tạo user (VD: sudo(Super user) useradd test1)
+    - passwd: cấp mật khẩu cho User (VD: sudo passwd test1)
+    - useradd -m test1 : tạo phân vùng mới cho User
 
