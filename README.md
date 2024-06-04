@@ -1,3 +1,7 @@
+A- HỆ ĐIỀU HÀNH
+  - Là phần trung gian giao tiếp giữa người dùng và phần cứng
+  - Hardware(Phần cứng) <-> Operating system(Lớp trung gian) <-> Application(Ứng dụng) <-> User(Người dùng)
+B- HỆ ĐIỀU HÀNH LINUX
 - Vật lý
 - Công nghệ (Visualization)
 - Hypervisor tạo ra Virtual Machine(), cho phép host Machine tạo ra nhiều môi trường
