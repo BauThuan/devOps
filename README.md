@@ -154,6 +154,26 @@ I- Docker
     - docker exec -it nginx_1 /bin/bash : truy cập vào nginx
 
     - docker network list: danh sach cac netword dang co
+
+    - apt-get update : update container
+    - apt-get install iputils-ping -y: tải các option liên quan
+
+    - docker inspect nginx_2: lấy các thành phần bên trong của container
+    - ping dia_chi_ip : kết nối đến nginx_2 trong cùng 1 network thì mới có thẻ giao tiếp cùng nhau
+    - docker network disconnect bridge ten_container : disconnect container 
+
+    - docker network create n-nginx: tạo mới một network
+    - docker network connect n-nginx nginx_1: connect 2 container lại với nhau
+
+    - volume, bindmount tmps
+
+
+    -  mkdir data: tạo thư mục mới
+
+    - docker run -it -d --name nginx -v ./data:/var/log nginx : v ./data:/var/log: Tạo một bind mount, gắn kết thư mục ./data trên máy chủ (host) vào thư mục /var/log trong container.
+
+    - docker run: tạo mới + chạy container
+    - docker start: chạy một container đã dừng 
     
 
 
