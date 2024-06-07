@@ -166,6 +166,9 @@ I- Docker
     - docker network connect n-nginx nginx_1: connect 2 container lại với nhau
 
     - volume, bindmount tmps
+    - Volume thích hợp cho việc lưu trữ dữ liệu lâu dài và chia sẻ giữa các container.
+    - Bind mount cho phép truy cập trực tiếp vào dữ liệu từ hệ thống file của máy chủ.
+    - Tmpfs mount thích hợp cho dữ liệu tạm thời cần hiệu suất cao và không cần lưu trữ lâu dài.
 
 
     -  mkdir data: tạo thư mục mới
