@@ -1,0 +1,62 @@
+1.docker image build:
+    Mô tả: Xây dựng một Docker Image từ một Dockerfile.
+    Cú pháp: docker build [OPTIONS] PATH | URL | -
+    Ví dụ:
+    docker build -t my_image:latest .
+    Tùy chọn:
+    -t: Gán nhãn (tag) cho image được tạo.
+    .: Đường dẫn đến thư mục chứa Dockerfile.
+
+2.docker image pull:
+    Mô tả: Tải về một Docker Image từ Docker Registry.
+    Cú pháp: docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+    Ví dụ:
+    docker pull nginx:latest
+
+3.docker image push:
+    Mô tả: Đẩy một Docker Image lên Docker Registry.
+    Cú pháp: docker push [OPTIONS] NAME[:TAG]
+    Ví dụ:
+    docker push my_image:latest
+
+4.docker image images:
+    Mô tả: Liệt kê các Docker Images trên máy.
+    Cú pháp: docker images [OPTIONS] [REPOSITORY[:TAG]]
+    Ví dụ:
+    docker images
+
+5.docker image rmi:
+    Mô tả: Xóa một hoặc nhiều Docker Images.
+    Cú pháp: docker rmi [OPTIONS] IMAGE [IMAGE...]
+    Ví dụ:
+    docker rmi my_image:latest
+
+6.docker image tag:
+    Mô tả: Tạo một nhãn (tag) cho Docker Image.
+    Cú pháp: docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
+    Ví dụ:
+    docker tag my_image:latest my_image:v1.0
+
+7.docker image save:
+    Mô tả: Lưu một hoặc nhiều Docker Images thành một tệp lưu trữ (archive).
+    Cú pháp: docker save [OPTIONS] IMAGE [IMAGE...]
+    Ví dụ:
+    docker save -o my_image.tar my_image:latest
+
+8.docker image load:
+    Mô tả: Tải Docker Images từ một tệp lưu trữ.
+    Cú pháp: docker load [OPTIONS]
+    Ví dụ:
+    docker load -i my_image.tar
+
+9.docker image history:
+    Mô tả: Hiển thị lịch sử của một Docker Image.
+    Cú pháp: docker history [OPTIONS] IMAGE
+    Ví dụ:
+    docker history my_image:latest
+
+10.docker image inspect:
+    Mô tả: Trả về thông tin chi tiết về Docker Image.
+    Cú pháp: docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+    Ví dụ:
+    docker inspect my_image:latest

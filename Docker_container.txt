@@ -1,0 +1,74 @@
+1.docker container run:
+
+    Mô tả: Tạo và chạy một container mới từ một image.
+    Cú pháp: docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+    Ví dụ:
+    docker run -d -p 80:80 nginx
+    Tùy chọn:
+    -d: Chạy container ở chế độ detached (chạy nền).
+    -p: Map cổng của máy chủ với cổng của container (host_port).
+
+2.docker ps:
+
+    Mô tả: Liệt kê các container đang chạy.
+    Cú pháp: docker ps [OPTIONS]
+    Ví dụ:
+    docker ps
+    Tùy chọn:
+    -a: Hiển thị tất cả các container, bao gồm cả container đã dừng.
+
+3.docker container stop:
+
+    Mô tả: Dừng một hoặc nhiều container đang chạy.
+    Cú pháp: docker stop [OPTIONS] CONTAINER [CONTAINER...]
+    Ví dụ:
+    docker stop my_container
+
+4.docker container start:
+
+    Mô tả: Khởi động một hoặc nhiều container đã dừng.
+    Cú pháp: docker start [OPTIONS] CONTAINER [CONTAINER...]
+    Ví dụ:
+    docker start my_container
+
+5.docker container restart:
+
+    Mô tả: Khởi động lại một container.
+    Cú pháp: docker restart [OPTIONS] CONTAINER [CONTAINER...]
+    Ví dụ:
+    docker restart my_container
+6.docker container rm:
+
+    Mô tả: Xóa một hoặc nhiều container.
+    Cú pháp: docker rm [OPTIONS] CONTAINER [CONTAINER...]
+    Ví dụ:
+    docker rm my_container
+
+7.docker exec:
+
+    Mô tả: Chạy một lệnh trong container đang chạy.
+    Cú pháp: docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+    Ví dụ:
+    docker exec -it my_container /bin/bash
+    Tùy chọn:
+    -it: Chạy lệnh trong chế độ interactive và mở terminal.
+
+8.docker logs:
+
+    Mô tả: Lấy log từ container.
+    Cú pháp: docker logs [OPTIONS] CONTAINER
+    Ví dụ:
+    docker logs my_container
+9.docker inspect:
+
+    Mô tả: Trả về thông tin chi tiết về container hoặc đối tượng Docker khác.
+    Cú pháp: docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+    Ví dụ:
+    docker inspect my_container
+
+10.docker cp:
+
+    Mô tả: Sao chép file hoặc thư mục giữa container và máy chủ.
+    Cú pháp: docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|SRC_PATH CONTAINER:DEST_PATH
+    Ví dụ:
+    docker cp my_container:/path/in/container /path/on/host

@@ -1,0 +1,35 @@
+1.docker network create:
+    Mô tả: Tạo một Docker Network mới.
+    Cú pháp: docker network create [OPTIONS] NETWORK
+    Ví dụ:
+    docker network create my_network
+
+2.docker network ls:
+    Mô tả: Liệt kê tất cả các Docker Networks.
+    Cú pháp: docker network ls [OPTIONS]
+    Ví dụ:
+    docker network ls
+
+3.docker network inspect:
+    Mô tả: Trả về thông tin chi tiết về một Docker Network.
+    Cú pháp: docker network inspect [OPTIONS] NETWORK [NETWORK...]
+    Ví dụ:
+    docker network inspect my_network
+
+4.docker network rm:
+    Mô tả: Xóa một hoặc nhiều Docker Networks.
+    Cú pháp: docker network rm [OPTIONS] NETWORK [NETWORK...]
+    Ví dụ:
+    docker network rm my_network
+
+5.docker network connect:
+    Mô tả: Kết nối một container vào một Docker Network.
+    Cú pháp: docker network connect [OPTIONS] NETWORK CONTAINER
+    Ví dụ:
+    docker network connect my_network my_container
+
+6.docker network disconnect:
+    Mô tả: Ngắt kết nối một container khỏi một Docker Network.
+    Cú pháp: docker network disconnect [OPTIONS] NETWORK CONTAINER
+    Ví dụ:
+    docker network disconnect my_network my_container
