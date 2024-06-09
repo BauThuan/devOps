@@ -1,0 +1,37 @@
+ARG VERSION=latest
+FROM node:$VERSION AS builder
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+ENV NODE_ENV=production
+
+EXPOSE 3000
+
+CMD ["node", "app.js"]
+LABEL maintainer="you@example.com"
+VOLUME ["/app/data"]
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+CMD curl -f http://localhost:3000/ || exit 1
+
+USER node
+
+
+- Giải thích
+Dockerfile này sẽ:
+    Sử dụng image Node.js với phiên bản có thể cấu hình.
+    Thiết lập thư mục làm việc.
+    Sao chép package.json và cài đặt dependencies.
+    Sao chép tất cả các file của ứng dụng vào container.
+    Thiết lập biến môi trường NODE_ENV.
+    Expose cổng 3000.
+    Đặt lệnh mặc định để chạy ứng dụng Node.js.
+    Thêm metadata về người duy trì image.
+    Tạo một volume để lưu trữ dữ liệu.
+    Thêm một health check để kiểm tra tình trạng sức khỏe của container.
+    Chuyển sang người dùng node để chạy các lệnh trong container.

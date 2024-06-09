@@ -1,0 +1,125 @@
+- Chưa các câu lệnh build
+- Docker sẽ đọc file này
+- Các Image xếp trồng lên nhau theo stack
+- Image được tạo từ nhiều Image khác, và Inage được tạo từ Image trước đó
+- Bare Image: image root , ngoài cùng
+
+
+- (-t: tag tên image muốn build)
+- (. : địa chỉ chứa docker file)
+- docker build -t .
+
+- FROM ten_image:vesion : tạo 1 image từ 1 image trước đó(latest=> lấy version mới nhất)
+
+1.FROM
+    Cú pháp: FROM <image>[:<tag>] [AS <name>]    
+    Giải thích:
+    <image>: Tên của Docker image nền tảng.
+    [:<tag>]: (Tùy chọn) Phiên bản của image, nếu không được chỉ định, mặc định là latest.
+    [AS <name>]: (Tùy chọn) Đặt tên cho giai đoạn này, hữu ích cho multi-stage builds.
+    Ví dụ: FROM node:14 AS builder
+
+2.RUN
+    Cú pháp: RUN <command>
+    Giải thích:
+    <command>: Lệnh shell được chạy trong quá trình build để thiết lập môi trường hoặc cài đặt phần mềm.
+    Ví dụ: RUN apt-get update && apt-get install -y git
+
+3.CMD
+    Cú pháp: CMD ["executable","param1","param2"] hoặc CMD command param1 param2
+    Giải thích:
+    Thiết lập lệnh mặc định sẽ được thực thi khi container khởi động.
+    Sử dụng dạng JSON để đảm bảo tính tương thích với ENTRYPOINT.
+    Ví dụ: CMD ["node", "app.js"]
+
+4.LABEL
+    Cú pháp: LABEL <key>=<value> ...
+    Giải thích:
+    Thêm metadata vào image.
+    Ví dụ: LABEL version="1.0" description="My app"
+
+5.EXPOSE
+    Cú pháp: EXPOSE <port> [<port>/<protocol>]
+    Giải thích:
+    Khai báo các cổng mà container sẽ lắng nghe.
+    Ví dụ: EXPOSE 3000
+
+6.ENV
+    Cú pháp: ENV <key> <value>
+    Giải thích:
+    Thiết lập biến môi trường.
+    Ví dụ: ENV NODE_ENV production
+
+7.ADD
+    Cú pháp: ADD <src>... <dest>
+    Giải thích:
+    Sao chép file, thư mục, hoặc URL từ máy chủ hoặc mạng vào image.
+    Hỗ trợ giải nén các file nén.
+    Ví dụ: ADD ./app.tar.gz /app
+
+8.COPY
+    Cú pháp: COPY <src>... <dest>
+    Giải thích:
+    Sao chép file hoặc thư mục từ máy chủ vào image.
+    Không hỗ trợ giải nén file nén.
+    Ví dụ: COPY . /app
+
+9.ENTRYPOINT
+    Cú pháp: ENTRYPOINT ["executable", "param1", "param2"] hoặc ENTRYPOINT command param1 param2
+    Giải thích:
+    Thiết lập lệnh mặc định mà container sẽ chạy. Không thể bị ghi đè bằng cách sử dụng lệnh docker run với tham số mới.
+    Ví dụ: ENTRYPOINT ["node", "app.js"]
+
+10.VOLUME
+    Cú pháp: VOLUME ["/data"]
+    Giải thích:
+    Tạo một điểm gắn kết cho volume để lưu trữ dữ liệu bên ngoài container.
+    Ví dụ: VOLUME /data
+
+11.USER
+    Cú pháp: USER <username>[:<group>]
+    Giải thích:
+    Chỉ định người dùng sẽ chạy các lệnh trong container.
+    Ví dụ: USER node
+
+12.WORKDIR
+    Cú pháp: WORKDIR <path>
+    Giải thích:
+    Thiết lập thư mục làm việc cho các lệnh tiếp theo.
+    Ví dụ: WORKDIR /app
+
+13.ARG
+    Cú pháp: ARG <name>[=<default value>]
+    Giải thích:
+    Định nghĩa các biến cho quá trình build. Giá trị có thể được cung cấp bằng tùy chọn --build-arg.
+    Ví dụ: ARG VERSION=latest
+
+14.ONBUILD
+    Cú pháp: ONBUILD <command>
+    Giải thích:
+    Thiết lập các lệnh sẽ được thực thi khi một image kế thừa từ image này.
+    Ví dụ: ONBUILD COPY . /app/src
+
+15.STOPSIGNAL
+    Cú pháp: STOPSIGNAL <signal>
+    Giải thích:
+    Thiết lập tín hiệu hệ thống sẽ được gửi để dừng container.
+    Ví dụ: STOPSIGNAL SIGTERM
+
+16.HEALTHCHECK
+    Cú pháp: HEALTHCHECK [OPTIONS] CMD <command>
+    Giải thích:
+    Cung cấp cách kiểm tra tình trạng sức khỏe của container.
+    Ví dụ:
+    dockerfile
+    Copy code
+    HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
+17.SHELL
+    Cú pháp: SHELL ["executable", "param1", "param2"]
+    Giải thích:
+    Thiết lập shell mặc định để thực thi các lệnh.
+    Ví dụ: SHELL ["/bin/bash", "-c"]
+
+
