@@ -9,6 +9,8 @@
 - (. : địa chỉ chứa docker file)
 - docker build -t .
 
+- docker run -it -d --name nginx_1 -v ${PWD}/data:/home nginx_n
+
 - FROM ten_image:vesion : tạo 1 image từ 1 image trước đó(latest=> lấy version mới nhất)
 
 1.FROM

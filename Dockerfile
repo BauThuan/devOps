@@ -3,10 +3,14 @@ ARG VERSION=latest
 
 FROM node:$VERSION
 
-ARG DIR=/app
+# ARG DIR=/app
 
-WORKDIR $DIR
+# WORKDIR $DIR
 
-COPY ./package.json .
+RUN useradd tester
 
-RUN npm install
+USER tester
+
+# COPY ./package.json .
+
+# RUN npm install

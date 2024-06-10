@@ -35,3 +35,8 @@ Dockerfile này sẽ:
     Tạo một volume để lưu trữ dữ liệu.
     Thêm một health check để kiểm tra tình trạng sức khỏe của container.
     Chuyển sang người dùng node để chạy các lệnh trong container.
+
+
+Nếu bạn thêm một tệp vào thư mục data trên máy chủ, tệp đó sẽ xuất hiện trong thư mục /home trong container. Ngược lại, nếu bạn xóa một tệp từ thư mục data trên máy chủ, tệp đó cũng sẽ bị xóa khỏi thư mục /home trong container.
+
+Điều này giúp bạn dễ dàng quản lý các tệp và dữ liệu giữa môi trường phát triển (máy chủ) và môi trường chạy ứng dụng (container).
