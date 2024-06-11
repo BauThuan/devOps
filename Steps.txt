@@ -1,0 +1,1 @@
+- config dockerfile -> start command docker build->dockerfile -> docker image -> docker container
