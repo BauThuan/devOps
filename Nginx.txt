@@ -1,0 +1,121 @@
+- File cấu hình chính của Nginx (thường là nginx.conf) là nơi bạn định nghĩa cách Nginx hoạt động và xử lý các yêu cầu từ client.
+Dưới đây là một giải thích chi tiết về các phần quan trọng trong file cấu hình Nginx:
+1. Cấu hình Global
+    - Phần này định nghĩa các thiết lập áp dụng cho toàn bộ Nginx server.
+
+        a, user: Xác định người dùng mà các worker process của Nginx sẽ chạy dưới quyền của đó.
+            user nginx;
+
+        b, worker_processes: Xác định số lượng worker process để xử lý các yêu cầu. Thường là auto để tự động phù hợp với số lõi CPU.
+            worker_processes auto;
+
+        c, error_log: Đường dẫn đến file error log của Nginx.
+            error_log /var/log/nginx/error.log;
+
+        d, pid: Đường dẫn đến file chứa process ID (PID) của Nginx.
+            pid /var/run/nginx.pid;
+
+        e, events: Phần này định nghĩa các sự kiện (events) mà Nginx sẽ xử lý.
+
+            events {
+                worker_connections 1024;
+                # other event configurations
+            }
+            worker_connections: Số lượng kết nối mà mỗi worker process có thể xử lý đồng thời.
+2. Cấu hình HTTP
+    - Phần này định nghĩa các cấu hình liên quan đến giao thức HTTP, bao gồm các server block và các thiết lập khác.
+
+        a, http: Phần bao quát các cấu hình HTTP.
+            http {
+                include       mime.types;
+                default_type  application/octet-stream;
+                # other HTTP configurations
+            }
+        b, include mime.types: Bao gồm file chứa các loại MIME types để Nginx có thể xác định định dạng của các tệp tin.
+            include mime.types;
+
+        c, default_type: Xác định loại MIME mặc định cho các file không có phần mở rộng hoặc loại MIME được xác định.
+            default_type application/octet-stream;
+
+        d, access_log: Đường dẫn đến file access log, ghi lại các yêu cầu đến server.
+            access_log /var/log/nginx/access.log;
+3. Cấu hình Server Blocks
+    - Server block (hoặc Virtual Host) là nơi bạn định nghĩa các cài đặt cho mỗi domain hoặc IP cụ thể mà Nginx sẽ phục vụ.
+
+        a, server: Định nghĩa một server block.
+            server {
+                listen 80;
+                server_name example.com;
+                # other server configurations
+            }
+        b, listen: Xác định cổng mà server block này lắng nghe các yêu cầu.
+            listen 80;
+
+        c, server_name: Xác định tên miền mà server block này áp dụng.
+            server_name example.com;
+
+        d, location: Định nghĩa cách Nginx xử lý các yêu cầu đối với một đường dẫn cụ thể.
+            location / {
+                root   /usr/share/nginx/html;
+                index  index.html index.htm;
+                # other location configurations
+            }
+        e, root: Đường dẫn tới thư mục gốc mà Nginx sẽ tìm các tệp tin tài nguyên để phục vụ.
+            root /usr/share/nginx/html;
+
+        f, index: Các file index mặc định mà Nginx sẽ tìm khi không có tên file cụ thể được yêu cầu.
+            index index.html index.htm;
+
+VD:    
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    access_log    /var/log/nginx/access.log;
+
+    server {
+        listen       80;
+        server_name  example.com;
+
+        location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+        }
+
+        location /images/ {
+            root   /var/www/;
+            index  index.html index.htm;
+        }
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   /usr/share/nginx/html;
+        }
+    }
+
+    server {
+        listen       80;
+        server_name  another-example.com;
+
+        location / {
+            root   /var/www/another-example;
+            index  index.html index.htm;
+        }
+    }
+}
+
+
+File cấu hình Nginx (nginx.conf) là nơi bạn định nghĩa cách Nginx hoạt động, bao gồm cấu hình global, cấu hình HTTP,
+ và các server blocks để xác định cách Nginx xử lý các yêu cầu từ client. 
+ Quản lý và điều chỉnh cấu hình Nginx đòi hỏi hiểu biết cơ bản về các directive 
+ và cách chúng tương tác với nhau để đảm bảo máy chủ của bạn hoạt động một cách hiệu quả và an toàn.
+
+Nginx được sử dụng như một web server và reverse proxy server để phục vụ và điều hướng traffic HTTP và HTTPS trong các ứng dụng web và mạng.

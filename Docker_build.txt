@@ -3,6 +3,8 @@
 - Các Image xếp trồng lên nhau theo stack
 - Image được tạo từ nhiều Image khác, và Inage được tạo từ Image trước đó
 - Bare Image: image root , ngoài cùng
+- Build Image đến Container và ngược lại có thể build từ Container về Image
+( docker commit nginx_x nginx_x:test => chuyển từ Container thành Image)
 
 
 - (-t: tag tên image muốn build)

@@ -1,0 +1,15 @@
+- Trước ki push Image lên docker hub thì cần phải login trên terminal
+- Docker login
+- Sau đó build Image (docker image build -t ten_moi .)
+- Sau đó sử dụng (docker push tranvanthuan/image-test:latest)
+
+- Docker registry (private, có thể lưu image bên trong và sử dụng nó)
+- Docker registry
+ - Build Image
+ - Tạo tag để gán cho image đó
+ - Push tag(nhãn) đó lên registry
+ - Pull tag đó về máy local dể tạo container
+ - Mục đích là để nhiều máy có thể sử dụng tag đó, lưu trữ
+ - Gắn authenticate cho registry
+
+- Chức năng gần như giống github push, pull như bình thường
